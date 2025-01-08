@@ -1,0 +1,215 @@
+* {
+    font-family: "Roboto", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: small;
+}
+
+.fs-module {
+    border-radius: 10px;
+    border: solid 1px black;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+.fs-module>input {
+    border-radius: 5px;
+    border: solid 1px black;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.fs-module>div {
+    height: 20vh;
+    overflow: auto;
+    border-radius: 5px;
+    border: solid 1px black;
+
+}
+
+.fs-module>div>div {
+    margin: 2px;
+    padding: 2px;
+    border: solid 1px black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.fs-module>div>div>span {
+    margin-right: auto;
+    padding: 0 auto;
+}
+
+.fs-module>div>div>button {
+    margin: 0 1px;
+    border-radius: 5px;
+    border: solid 1px black;
+    padding: 3px;
+    width: 20%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lightgray;
+    border-radius: 5px;
+}
+
+div.range-element {
+    padding: 2px;
+    border: solid 1px black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin: 1px 0;
+}
+
+.range-element>span.title {
+    margin-right: auto;
+    padding: 0 auto;
+
+}
+
+.range-element>input {
+    border-radius: 5px;
+    margin: 0 5px;
+    border: solid 1px black;
+    width: 15%;
+    min-width: 7ch;
+}
+
+div.value-element {
+    padding: 2px;
+    border: solid 1px black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin: 1px 0;
+}
+
+.value-element>span.title {
+    margin-right: auto;
+    padding: 0 auto;
+
+}
+
+.value-element>input {
+    border-radius: 5px;
+    margin: 0 5px;
+    border: solid 1px black;
+    width: 15%;
+    min-width: 7ch;
+}
+
+.rarity {
+    background-image: url(https://static.ankama.com/wakfu/ng/modules/icons/sprite_encyclopedia.png);
+    height: 22px;
+    width: 22px;
+    display: inline-block;
+}
+
+.rarity-0 {
+    background-position: -96px -642px
+}
+
+.rarity-1 {
+    background-position: -96px -674px
+}
+
+.rarity-2 {
+    background-position: -96px -706px
+}
+
+.rarity-3 {
+    background-position: -96px -738px
+}
+
+.rarity-4 {
+    background-position: -96px -770px
+}
+
+.rarity-5 {
+    background-position: -96px -802px
+}
+
+.rarity-6 {
+    background-position: -96px -1182px
+}
+
+.rarity-7 {
+    background-position: -96px -1120px
+}
+
+div.rarity-table {
+    display: flex;
+}
+
+div.rarity-table>div>input {
+    display: block;
+    margin: auto;
+}
+
+div.item-type-table {
+    display: flex;
+}
+
+div.item-type-table>div>* {
+    display: block;
+    margin: auto;
+}
+
+div.main>div.menu {
+    max-width: 30vw;
+    flex: 1;
+    border: 1px solid black;
+}
+
+.item-card {
+    flex: 1;
+    border: 2px solid rgb(96 139 168);
+    border-radius: 10px;
+    background-color: rgb(96 139 168 / 0.2);
+    margin: 5px 3px;
+    padding: 10px;
+}
+
+.item-card-grid {
+    overflow-x: auto;
+    overflow-y: none;
+    flex: 3;
+}
+
+.item-card-placeholder {
+    visibility: hidden;
+}
+
+.item-row {
+    display: flex;
+}
+
+.main {
+    display: flex;
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+}
+
+.requirement-table {
+    margin: 10px;
+}
+
+.weight-table {
+    margin: 10px;
+}
