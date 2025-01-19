@@ -18,19 +18,19 @@ class FSManagerModule {
         this.elem.appendChild(this.fstable.elem);
     }
 
-    onRequirementClick(callback: (id: number, positive: boolean) => any) {
+    onRequirementClick(callback: (id: WExtendedId, positive: boolean) => any) {
         this.fstable.onRequirementClick(callback);
     }
 
-    onWeightClick(callback: (id: number, positive: boolean) => any) {
+    onWeightClick(callback: (id: WExtendedId, positive: boolean) => any) {
         this.fstable.onWeightClick(callback);
     }
 
-    setRequirementState(id: number, positive: boolean) {
+    setRequirementState(id: WExtendedId, positive: boolean) {
         this.fstable.setRequirementState(id, positive);
     }
 
-    setWeightState(id: number, positive: boolean) {
+    setWeightState(id: WExtendedId, positive: boolean) {
         this.fstable.setWeightState(id, positive);
     }
 }

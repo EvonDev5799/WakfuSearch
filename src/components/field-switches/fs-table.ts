@@ -4,45 +4,53 @@ function match(tested: string, template: string) {
 }
 
 class FSTableModule {
-    switches: FieldSwitchModule[];
+    switches: Map<WExtendedId, FieldSwitchModule>;
     elem: HTMLDivElement;
 
     constructor(actions: WActions, language: language) {
-        this.switches = [];
+        this.switches = new Map<WExtendedId, FieldSwitchModule>();
         this.elem = document.createElement('div');
 
         for (let action of actions) {
-            let swtch = new FieldSwitchModule(action, language);
-            this.switches.push(swtch);
+            if ((action.definition.id == 1068) || (action.definition.id == 1069)) {
+                for (let i = 1; i <= 3; i++) {
+                    let swtch = new FieldSwitchModule({ id: action.definition.id, subId: i }, parseGeneric(action.description[language], ["", 0, i]), language);
+                    this.switches.set({ id: action.definition.id, subId: i }, swtch);
+                }
+            } else {
+                let swtch = new FieldSwitchModule({ id: action.definition.id }, defaultParse(action.description[language]), language);
+                this.switches.set({ id: action.definition.id }, swtch);
+            }
         }
         this.filter("");
     }
 
-    onRequirementClick(callback: (id: number, positive: boolean) => any) {
-        for (let swtch of this.switches) {
+    onRequirementClick(callback: (id: WExtendedId, positive: boolean) => any) {
+        for (let swtch of this.switches.values()) {
             swtch.onRequirementClick(callback);
         }
     }
 
-    onWeightClick(callback: (id: number, positive: boolean) => any) {
-        for (let swtch of this.switches) {
+    onWeightClick(callback: (id: WExtendedId, positive: boolean) => any) {
+        for (let swtch of this.switches.values()) {
             swtch.onWeightClick(callback);
         }
     }
 
-    setRequirementState(id: number, positive: boolean) {
-        for (let swtch of this.switches) {
-            if (swtch.id == id) {
-                swtch.setRequirementState(positive);
-                break;
+    setRequirementState(id: WExtendedId, positive: boolean) {
+        for (let [key, value] of this.switches) {
+            if (idMatch(id, key)) {
+                value.setRequirementState(positive);
+                break
             }
         }
     }
 
-    setWeightState(id: number, positive: boolean) {
-        for (let swtch of this.switches) {
-            if (swtch.id == id) {
-                swtch.setWeightState(positive);
+
+    setWeightState(id: WExtendedId, positive: boolean) {
+        for (let [key, value] of this.switches) {
+            if (idMatch(id, key)) {
+                value.setWeightState(positive);
                 break;
             }
         }
@@ -50,7 +58,7 @@ class FSTableModule {
 
     filter(template: string) {
         let newChilds: HTMLDivElement[] = []
-        for (let swtch of this.switches) {
+        for (let swtch of this.switches.values()) {
             if (match(swtch.description, template)) newChilds.push(swtch.elem);
         }
         this.elem.replaceChildren(...newChilds);

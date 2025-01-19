@@ -4,7 +4,7 @@ class QueryModule {
     level: RangeInput;
     requirements: RequirementTableModule;
     weights: WeightTableModule;
-    switches: any;
+    switches: FSManagerModule;
     search: HTMLButtonElement;
     elem: HTMLDivElement;
 
@@ -16,8 +16,8 @@ class QueryModule {
         this.weights = new WeightTableModule(actions, language);
         this.switches = new FSManagerModule(actions, language);
 
-        this.switches.onRequirementClick((id: number, active: boolean) => this.setRequirementState(id, active));
-        this.switches.onWeightClick((id: number, active: boolean) => this.setWeightState(id, active));
+        this.switches.onRequirementClick((id: WExtendedId, active: boolean) => this.setRequirementState(id, active));
+        this.switches.onWeightClick((id: WExtendedId, active: boolean) => this.setWeightState(id, active));
 
         this.search = document.createElement('button');
         this.search.innerHTML = TextHelper.searchPlaceholder[language];
@@ -34,12 +34,12 @@ class QueryModule {
         this.elem.appendChild(this.search);
     };
 
-    setRequirementState(id: number, active: boolean) {
+    setRequirementState(id: WExtendedId, active: boolean) {
         this.switches.setRequirementState(id, !active);
         this.requirements.set(id, active);
     };
 
-    setWeightState(id: number, active: boolean) {
+    setWeightState(id: WExtendedId, active: boolean) {
         this.switches.setWeightState(id, !active);
         this.weights.set(id, active);
     };

@@ -3,18 +3,21 @@ class RequirementModule {
     id;
     display;
     range;
+    params;
     elem;
-    constructor(action, display, language) {
-        this.id = action.definition.id;
+    constructor(id, caption, display, params) {
+        this.id = id;
         this.display = display;
-        this.range = new RangeInput(defaultParse(action.description[language]));
+        this.range = new RangeInput(caption);
         this.elem = this.range.elem;
+        this.params = params;
     }
     ;
     queryObject() {
         return {
             id: this.id,
-            range: this.range.queryObject()
+            range: this.range.queryObject(),
+            params: this.params
         };
     }
     ;

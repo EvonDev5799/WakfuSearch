@@ -1,17 +1,17 @@
 class FieldSwitchModule {
-    id: any;
-    requirementButton: any;
-    weightButton: any;
+    id: WExtendedId;
+    requirementButton: SwitchButtonControl;
+    weightButton: SwitchButtonControl;
     description: string;
     elem: HTMLDivElement;
 
-    constructor(action: WAction, language: language) {
+    constructor(id: WExtendedId, caption: string, language: language) {
 
-        this.id = action.definition.id;
+        this.id = id;
         this.requirementButton = new SwitchButtonControl(TextHelper.requirement[language]);
         this.weightButton = new SwitchButtonControl(TextHelper.weight[language]);
 
-        this.description = defaultParse(action.description[language]);
+        this.description = caption;
         let span = document.createElement('span');
         span.innerHTML = this.description;
 
@@ -21,11 +21,11 @@ class FieldSwitchModule {
         this.elem.appendChild(this.weightButton.elem);
     }
 
-    onRequirementClick(callback: (id: number, positive: boolean) => any) {
+    onRequirementClick(callback: (id: WExtendedId, positive: boolean) => any) {
         this.requirementButton.onClick((positive: boolean) => { callback(this.id, positive) });
     }
 
-    onWeightClick(callback: (id: number, positive: boolean) => any) {
+    onWeightClick(callback: (id: WExtendedId, positive: boolean) => any) {
         this.weightButton.onClick((positive: boolean) => { callback(this.id, positive) });
     }
 

@@ -5,11 +5,11 @@ class FieldSwitchModule {
     weightButton;
     description;
     elem;
-    constructor(action, language) {
-        this.id = action.definition.id;
+    constructor(id, caption, language) {
+        this.id = id;
         this.requirementButton = new SwitchButtonControl(TextHelper.requirement[language]);
         this.weightButton = new SwitchButtonControl(TextHelper.weight[language]);
-        this.description = defaultParse(action.description[language]);
+        this.description = caption;
         let span = document.createElement('span');
         span.innerHTML = this.description;
         this.elem = document.createElement('div');

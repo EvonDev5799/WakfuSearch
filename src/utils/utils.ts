@@ -8,3 +8,5 @@ function GetGfx(itemData: WItemData): number { return itemData.definition.item.g
 function GetParam(effect: WEffectNode, index: number): number { return effect.effect.definition.params[index]; }
 function GetActionId(effect: WEffectNode): number { return effect.effect.definition.actionId }
 function GetValue(effect: WEffectNode): number { return GetParam(effect, 0); }
+
+function idMatch(id1: WExtendedId, id2: WExtendedId) { return (id1.id == id2.id) && (id1.subId == id2.subId) }

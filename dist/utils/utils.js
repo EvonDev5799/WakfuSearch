@@ -8,3 +8,4 @@ function GetGfx(itemData) { return itemData.definition.item.graphicParameters.gf
 function GetParam(effect, index) { return effect.effect.definition.params[index]; }
 function GetActionId(effect) { return effect.effect.definition.actionId; }
 function GetValue(effect) { return GetParam(effect, 0); }
+function idMatch(id1, id2) { return (id1.id == id2.id) && (id1.subId == id2.subId); }

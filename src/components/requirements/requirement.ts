@@ -1,20 +1,23 @@
-class RequirementModule implements TableItem {
+class RequirementModule {
     id: number;
     display: boolean;
     range: RangeInput;
+    params?: WParameters[];
     elem: HTMLDivElement;
 
-    constructor(action: WAction, display: boolean, language: language) {
-        this.id = action.definition.id;
+    constructor(id: number, caption: string, display: boolean, params?: WParameters[]) {
+        this.id = id;
         this.display = display;
-        this.range = new RangeInput(defaultParse(action.description[language]));
+        this.range = new RangeInput(caption);
         this.elem = this.range.elem;
+        this.params = params;
     };
 
     queryObject(): WRequirement {
         return {
             id: this.id,
-            range: this.range.queryObject()
+            range: this.range.queryObject(),
+            params: this.params
         }
     };
 
