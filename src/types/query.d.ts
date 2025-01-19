@@ -6,6 +6,7 @@ type WRange = {
 type WRequirement = {
     id: number;
     range: WRange;
+    params?: WParameters[];
 };
 
 type WParameters = {

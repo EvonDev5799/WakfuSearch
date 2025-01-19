@@ -34,7 +34,7 @@ function matck_rarity(item: WItemData, query: WQuery): boolean {
 
 function match_requirements(item: WItemData, query: WQuery): boolean {
     for (let requirement of query.requirements) {
-        let effect = effect_by_id(GetEquipEffects(item), requirement.id);
+        let effect = effect_by_id(GetEquipEffects(item), requirement.id, requirement.params);
         if (effect === undefined || !inRange(GetValue(effect), requirement.range)) return false;
     }
     return true;
