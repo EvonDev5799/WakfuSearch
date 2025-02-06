@@ -8,10 +8,9 @@ let mainDiv = document.createElement('div');
 mainDiv.classList.add('main');
 
 queryModule.onSearch((query) => {
+    console.log(query);
     if (icg != undefined) icg.elem.remove();
     let results = process_request(items, query);
-    console.log(results.length);
-    console.log(results.slice(0, 10));
     icg = new ItemCardGrid(results, actions, 5, 'fr');
     mainDiv.appendChild(icg.elem);
 

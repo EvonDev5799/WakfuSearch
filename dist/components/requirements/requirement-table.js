@@ -7,7 +7,7 @@ class RequirementTableModule {
         for (let action of actions) {
             if ((action.definition.id == 1068) || (action.definition.id == 1069)) {
                 for (let i = 1; i <= 3; i++) {
-                    let rm = new RequirementModule(action.definition.id, parseGeneric(action.description[language], ["", 0, i]), false);
+                    let rm = new RequirementModule(action.definition.id, parseGeneric(action.description[language], ["", 0, i]), false, [{ index: 2, range: { min: i, max: i } }]);
                     this.requirements.set({ id: action.definition.id, subId: i }, rm);
                 }
             }
